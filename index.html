@@ -51,7 +51,7 @@
             <h1>javascript type conversion test</h1>
             <div class="input-group" style="font-family: monospace;">
                 <span class="input-group-addon" id="question"></span>
-                <input type="text" class="form-control" id="answer">
+                <input type="text" class="form-control" id="answer" onkeypress="runScript(event)" >
                 <span class="input-group-btn">
                      <button class="btn btn-default" type="button" onclick="verifyAnswer(document.getElementById('question').innerText,document.getElementById('answer').value,'answers');setQuestion();">
                          Go</button>
@@ -70,6 +70,15 @@
 
     </div>
     <script>
+
+function runScript(e) {
+    if (e.keyCode === 13) {
+        verifyAnswer(document.getElementById('question').innerText,document.getElementById('answer').value,'answers');
+        setQuestion();
+        document.getElementById('answer').value = '';
+    }
+}
+
         function setQuestion(){
             var q = test();
             document.getElementById('question').innerText = String(q);
