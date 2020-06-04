@@ -81,6 +81,9 @@ function runScript(e) {
 
         function setQuestion(){
             var q = test();
+            while (String(q) !== String(eval(q))) {
+            q = test();
+            }
             document.getElementById('question').innerText = String(q);
         }
         setQuestion();
